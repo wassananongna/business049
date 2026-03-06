@@ -7,7 +7,7 @@
 <body>
     <?php
     require "connect.php";
-    $sql = "SELECT * FROM customer";
+    $sql = "SELECT customer.CustomerID,customer.Name,customer.Email,Country.CountryName FROM customer INNER JOIN Country ON customer.CountryCode = country.CountryCode WHERE country.CountryCode = 'TH' ";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
@@ -20,18 +20,18 @@
             <th width="140">
                 <div align="center">ชื่อ</div>
             </th>
-            <th width="120">
+            <!-- <th width="120">
                 <div align="center">วันเเกิด</div>
-            </th>
+            </th> -->
             <th width="100">
                 <div align="center">อีเมล์</div>
             </th>
             <th width="50">
                 <div align="center">ประเทศ</div>
             </th>
-            <th width="70">
+            <!-- <th width="70">
                 <div align="center">ยอดหนี้</div>
-            </th>
+            </th> -->
         </tr>
 
 
@@ -49,17 +49,17 @@
                     <?php echo $result["Name"]; ?>
                 </td>
 
-                <td>
+                <!-- <td>
                     <?php echo $result["Birthdate"];
                     ?>
-                </td>
+                </td> -->
 
                 <td> <?php echo $result["Email"]; ?></td>
-                <td> <?php echo $result["CountryCode"];
+                <td> <?php echo $result["CountryName"];
                         ?></td>
-                <td>
+                <!-- <td>
                     <?php echo $result["OutstandingDebt"]; ?>
-                </td>
+                </td> -->
             </tr>
         <?php
         }
